@@ -2,10 +2,80 @@ const thumbs = document.querySelectorAll('.thumb');
 const mainImage = document.querySelector('#mainProductImage');
 const CONFIG = {
   productName: 'Bolso Impermeable',
+  productPrice: 199000,
+  currency: 'PYG',
+  origin: 'landing_bolso_impermeable',
   supabaseUrl: 'https://roruinqorwgolcrhhmpm.supabase.co',
   supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJvcnVpbnFvcndnb2xjcmhobXBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI2NTU0MDcsImV4cCI6MjA5ODIzMTQwN30.VzNSqYUM6amTOToZUsJ7Emjapy-y9Y44hDmbC1XG9Eg',
   supabaseTable: 'cleanpro',
 };
+
+const trackingFired = new Set();
+
+function trackingPayload(quantity = Number(document.querySelector('#quantitySelect')?.value || 1)) {
+  const subtotal = pricesByQuantity[quantity] || pricesByQuantity[1] || CONFIG.productPrice;
+  return {
+    producto: CONFIG.productName,
+    precio: CONFIG.productPrice,
+    cantidad: quantity,
+    subtotal,
+    moneda: CONFIG.currency,
+    origen: CONFIG.origin,
+    url: window.location.href,
+  };
+}
+
+function metaPayload(payload) {
+  return {
+    content_name: CONFIG.productName,
+    content_type: 'product',
+    value: payload.subtotal,
+    currency: CONFIG.currency,
+    quantity: payload.cantidad,
+  };
+}
+
+function fireTracking(key, callback) {
+  if (trackingFired.has(key)) return;
+  trackingFired.add(key);
+  callback();
+}
+
+function trackGA(eventName, payload = trackingPayload()) {
+  if (typeof window.gtag === 'function') window.gtag('event', eventName, payload);
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: eventName, ...payload });
+}
+
+function trackMeta(eventName, payload = trackingPayload()) {
+  if (typeof window.fbq === 'function') window.fbq('track', eventName, metaPayload(payload));
+}
+
+function trackLandingEvent(eventName, payload = trackingPayload()) {
+  const events = {
+    view_content: () => {
+      fireTracking('ga4:view_item', () => trackGA('view_item', payload));
+      fireTracking('meta:ViewContent', () => trackMeta('ViewContent', payload));
+    },
+    add_to_cart: () => {
+      fireTracking('ga4:add_to_cart', () => trackGA('add_to_cart', payload));
+      fireTracking('meta:AddToCart', () => trackMeta('AddToCart', payload));
+    },
+    begin_checkout: () => {
+      fireTracking('ga4:begin_checkout', () => trackGA('begin_checkout', payload));
+      fireTracking('meta:InitiateCheckout', () => trackMeta('InitiateCheckout', payload));
+    },
+    purchase: () => {
+      fireTracking('ga4:purchase', () => trackGA('purchase', payload));
+      fireTracking('meta:Purchase', () => trackMeta('Purchase', payload));
+    },
+    lead: () => {
+      fireTracking('ga4:generate_lead', () => trackGA('generate_lead', payload));
+      fireTracking('meta:Lead', () => trackMeta('Lead', payload));
+    },
+  };
+  events[eventName]?.();
+}
 
 // Map thumbnail index to color name (index 0 = PROD default, no color)
 const thumbIndexToColor = {
@@ -362,6 +432,9 @@ function showCheckout() {
   checkoutPage.hidden = false;
   document.body.classList.add('checkout-open');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  const payload = trackingPayload();
+  trackLandingEvent('add_to_cart', payload);
+  trackLandingEvent('begin_checkout', payload);
 }
 
 function showProduct() {
@@ -451,6 +524,8 @@ updateFooterSummary();
 updateDeliveryNotice();
 initMapPicker();
 initFormDeliveryNotices();
+fireTracking('ga4:page_view', () => trackGA('page_view'));
+trackLandingEvent('view_content');
 
 orderForms.forEach((form) => form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -505,6 +580,9 @@ orderForms.forEach((form) => form.addEventListener('submit', async (event) => {
   try {
     saveOrder(order);
     await saveOrderToSupabase(supabaseOrder);
+    const payload = trackingPayload(quantity);
+    trackLandingEvent('purchase', payload);
+    trackLandingEvent('lead', payload);
   } catch (error) {
     console.error(error);
     if (currentFormError) currentFormError.textContent = 'No se pudo guardar el pedido. Revisá la conexión o la configuración de Supabase.';
