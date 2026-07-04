@@ -58,6 +58,14 @@ function trackLandingEvent(eventName, payload = trackingPayload()) {
       fireTracking('ga4:view_item', () => trackGA('view_item', payload));
       fireTracking('meta:ViewContent', () => trackMeta('ViewContent', payload));
     },
+    form_start: () => {
+      fireTracking('ga4:form_start', () => trackGA('form_start', payload));
+      fireTracking('meta:form_start', () => trackMeta('FormStart', payload));
+    },
+    form_complete: () => {
+      fireTracking('ga4:form_complete', () => trackGA('form_complete', payload));
+      fireTracking('meta:form_complete', () => trackMeta('FormComplete', payload));
+    },
     add_to_cart: () => {
       fireTracking('ga4:add_to_cart', () => trackGA('add_to_cart', payload));
       fireTracking('meta:AddToCart', () => trackMeta('AddToCart', payload));
@@ -525,6 +533,23 @@ updateFooterSummary();
 updateDeliveryNotice();
 initMapPicker();
 initFormDeliveryNotices();
+
+function initFormTracking() {
+  let formStarted = false;
+  orderForms.forEach((form) => {
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach((input) => {
+      input.addEventListener('focus', () => {
+        if (!formStarted) {
+          formStarted = true;
+          trackLandingEvent('form_start');
+        }
+      }, { once: true });
+    });
+  });
+}
+
+initFormTracking();
 fireTracking('ga4:page_view', () => trackGA('page_view'));
 trackLandingEvent('view_content');
 
@@ -584,6 +609,7 @@ orderForms.forEach((form) => form.addEventListener('submit', async (event) => {
     const payload = trackingPayload(quantity);
     trackLandingEvent('purchase', payload);
     trackLandingEvent('lead', payload);
+    trackLandingEvent('form_complete', payload);
   } catch (error) {
     console.error(error);
     if (currentFormError) currentFormError.textContent = 'No se pudo guardar el pedido. Revisá la conexión o la configuración de Supabase.';
