@@ -25,6 +25,7 @@ function trackingPayload(quantity = Number(document.querySelector('#quantitySele
   };
 }
 
+
 function metaPayload(payload) {
   return {
     content_name: CONFIG.productName,
@@ -535,7 +536,7 @@ orderForms.forEach((form) => form.addEventListener('submit', async (event) => {
   const color = String(formData.get('color') || 'Rosa');
   const submitButton = form.querySelector('button[type="submit"]');
   const currentFormError = form.querySelector('.form-error') || formError;
-  
+
   const order = {
     id: generateOrderNumber(),
     product: CONFIG.productName,
