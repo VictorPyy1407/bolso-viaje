@@ -7,7 +7,7 @@ const CONFIG = {
   origin: 'landing_bolso_impermeable',
   supabaseUrl: 'https://roruinqorwgolcrhhmpm.supabase.co',
   supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJvcnVpbnFvcndnb2xjcmhobXBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI2NTU0MDcsImV4cCI6MjA5ODIzMTQwN30.VzNSqYUM6amTOToZUsJ7Emjapy-y9Y44hDmbC1XG9Eg',
-  supabaseTable: 'cleanpro',
+  supabaseTable: 'pedidos_web',
 };
 
 const trackingFired = new Set();
@@ -58,14 +58,6 @@ function trackLandingEvent(eventName, payload = trackingPayload()) {
       fireTracking('ga4:view_item', () => trackGA('view_item', payload));
       fireTracking('meta:ViewContent', () => trackMeta('ViewContent', payload));
     },
-    form_start: () => {
-      fireTracking('ga4:form_start', () => trackGA('form_start', payload));
-      fireTracking('meta:form_start', () => trackMeta('FormStart', payload));
-    },
-    form_complete: () => {
-      fireTracking('ga4:form_complete', () => trackGA('form_complete', payload));
-      fireTracking('meta:form_complete', () => trackMeta('FormComplete', payload));
-    },
     add_to_cart: () => {
       fireTracking('ga4:add_to_cart', () => trackGA('add_to_cart', payload));
       fireTracking('meta:AddToCart', () => trackMeta('AddToCart', payload));
@@ -73,10 +65,6 @@ function trackLandingEvent(eventName, payload = trackingPayload()) {
     begin_checkout: () => {
       fireTracking('ga4:begin_checkout', () => trackGA('begin_checkout', payload));
       fireTracking('meta:InitiateCheckout', () => trackMeta('InitiateCheckout', payload));
-    },
-    purchase: () => {
-      fireTracking('ga4:purchase', () => trackGA('purchase', payload));
-      fireTracking('meta:Purchase', () => trackMeta('Purchase', payload));
     },
     lead: () => {
       fireTracking('ga4:generate_lead', () => trackGA('generate_lead', payload));
@@ -105,11 +93,9 @@ const colorToImageSrc = {
 
 function updateColorDropdowns(color) {
   const colorSelect = document.querySelector('#colorSelect');
-  const footerColorSelect = document.querySelector('#footerColorSelect');
   const summaryColor = document.querySelector('#summaryColor');
 
   if (colorSelect) colorSelect.value = color;
-  if (footerColorSelect) footerColorSelect.value = color;
   if (summaryColor) summaryColor.textContent = color;
 }
 
@@ -151,25 +137,6 @@ function handleColorChange(event) {
 }
 
 document.querySelector('#colorSelect')?.addEventListener('change', handleColorChange);
-document.querySelector('#footerColorSelect')?.addEventListener('change', handleColorChange);
-
-const offerDuration = 10 * 60;
-let remaining = offerDuration;
-const minutes = document.querySelector('#minutes');
-const seconds = document.querySelector('#seconds');
-
-function updateTimer() {
-  const currentMinutes = Math.floor(remaining / 60);
-  const currentSeconds = remaining % 60;
-
-  if (minutes) minutes.textContent = String(currentMinutes).padStart(2, '0');
-  if (seconds) seconds.textContent = String(currentSeconds).padStart(2, '0');
-
-  remaining = remaining > 0 ? remaining - 1 : offerDuration;
-}
-
-updateTimer();
-setInterval(updateTimer, 1000);
 
 document.querySelector('.gallery-arrow-right')?.addEventListener('click', () => {
   const currentIndex = Array.from(thumbs).findIndex((thumb) => thumb.classList.contains('active'));
@@ -182,17 +149,6 @@ document.querySelector('.gallery-arrow-left')?.addEventListener('click', () => {
   const prevThumb = thumbs[(currentIndex - 1 + thumbs.length) % thumbs.length];
   prevThumb.click();
 });
-
-const viewerCount = document.querySelector('#viewerCount');
-
-function updateViewerCount() {
-  if (!viewerCount) return;
-
-  const nextCount = Math.floor(Math.random() * 12) + 9;
-  viewerCount.textContent = String(nextCount);
-}
-
-setInterval(updateViewerCount, 6500);
 
 const purchaseForm = document.querySelector('#purchaseForm');
 const orderForms = document.querySelectorAll('[data-order-form]');
@@ -219,8 +175,8 @@ let mapMarker;
 let selectedMapLink = '';
 const pricesByQuantity = {
   1: 199000,
-  2: 398000,
-  3: 597000,
+  2: 369000,
+  3: 525000,
 };
 
 function formatGuarani(value) {
@@ -245,27 +201,6 @@ function updateOrderSummary() {
   if (summaryTotal) summaryTotal.textContent = totalText;
 }
 
-function updateFooterSummary() {
-  const footerQty = document.querySelector('#footerQuantitySelect');
-  const footerColor = document.querySelector('#footerColorSelect');
-  const footerSummaryQty = document.querySelector('#footerSummaryQuantity');
-  const footerSummaryColor = document.querySelector('#footerSummaryColor');
-  const footerSummaryQtyText = document.querySelector('#footerSummaryQty');
-  const footerSummaryTotal = document.querySelector('#footerSummaryTotal');
-
-  if (!footerQty) return;
-
-  const quantity = Number(footerQty.value || 1);
-  const price = pricesByQuantity[quantity] || pricesByQuantity[1];
-  const quantityText = getQuantityText(quantity);
-  const totalText = formatGuarani(price);
-
-  if (footerSummaryQty) footerSummaryQty.textContent = quantityText;
-  if (footerSummaryColor && footerColor) footerSummaryColor.textContent = footerColor.value;
-  if (footerSummaryQtyText) footerSummaryQtyText.textContent = quantityText;
-  if (footerSummaryTotal) footerSummaryTotal.textContent = totalText;
-}
-
 function isCashOnDeliveryArea(value) {
   const city = value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   const centralCities = ['asuncion', 'central', 'san lorenzo', 'fernando de la mora', 'luque', 'capitata', 'capiata', 'lambare', 'mariano roque alonso', 'nemby', 'ñemby', 'villa elisa', 'san antonio', 'limpio', 'itaugua', 'ita', 'aregua', 'ypane', 'yaguaron'];
@@ -283,8 +218,8 @@ function updateDeliveryNotice() {
   deliveryNotice.classList.toggle('delivery-interior', Boolean(value && !isKnownCashArea));
 
   if (!value) {
-    deliveryNotice.textContent = 'Asunción y Central: envío gratis y pago contra entrega. Interior: se coordina una seña previa por WhatsApp.';
-    paymentNote.textContent = 'Asunción y Central: no pagás nada ahora, abonás al recibir.';
+    deliveryNotice.textContent = 'Asunción y Central: envío gratis y pago contra entrega. Interior: te contactamos para coordinar el abono antes del despacho.';
+    paymentNote.textContent = 'No pagás nada ahora. Registrás el pedido y te contactamos para confirmar antes del envío.';
     return;
   }
 
@@ -294,8 +229,8 @@ function updateDeliveryNotice() {
     return;
   }
 
-  deliveryNotice.textContent = 'Para envíos al interior se coordina una seña previa por WhatsApp antes del despacho.';
-  paymentNote.textContent = 'Interior: se coordina una seña previa por WhatsApp y el saldo al recibir.';
+  deliveryNotice.textContent = 'Para envíos al interior te contactamos para coordinar el abono antes del despacho.';
+  paymentNote.textContent = 'Interior: coordinamos el abono y despacho luego de registrar el pedido.';
 }
 
 function setDeliveryNoticeText(notice, value) {
@@ -306,13 +241,13 @@ function setDeliveryNoticeText(notice, value) {
   notice.classList.toggle('delivery-interior', Boolean(value && !isKnownCashArea));
 
   if (!value) {
-    notice.textContent = 'Asunción y Central: envío gratis y pago contra entrega. Interior: se coordina una seña previa por WhatsApp.';
+    notice.textContent = 'Asunción y Central: envío gratis y pago contra entrega. Interior: te contactamos para coordinar el abono antes del despacho.';
     return;
   }
 
   notice.textContent = isKnownCashArea
     ? 'Zona habilitada para envío gratis y pago contra entrega. No abonás nada ahora.'
-    : 'Para envíos al interior se coordina una seña previa por WhatsApp antes del despacho.';
+    : 'Para envíos al interior te contactamos para coordinar el abono antes del despacho.';
 }
 
 function initFormDeliveryNotices() {
@@ -463,6 +398,25 @@ function getComboName(quantity) {
   return `${quantity} ${quantity === 1 ? 'unidad' : 'unidades'}`;
 }
 
+function cleanText(value) {
+  return String(value || '').trim().replace(/\s+/g, ' ');
+}
+
+function cleanReferenceNote(value, city) {
+  const note = cleanText(value);
+  if (!note) return '';
+
+  const compactNote = note.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '');
+  const compactCity = cleanText(city).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '');
+
+  if (compactCity && compactNote === compactCity) return '';
+  return note;
+}
+
+function getDeliveryZone(city) {
+  return isCashOnDeliveryArea(city) ? 'Asunción/Central' : 'Interior';
+}
+
 function saveOrder(order) {
   const orders = JSON.parse(localStorage.getItem('bagOrders') || '[]');
   orders.push(order);
@@ -493,7 +447,7 @@ function showConfirmation(order) {
   if (confirmationPaymentText) {
     confirmationPaymentText.innerHTML = order.paymentMode === 'cash_on_delivery'
       ? `Recordá que el pago se realiza al recibir el producto. Te hablaremos al número <strong>${order.phone || '---'}</strong>.`
-      : `Para envíos al interior coordinaremos una seña previa por WhatsApp. Te hablaremos al número <strong>${order.phone || '---'}</strong>.`;
+      : `Para envíos al interior coordinaremos el abono previo. Te contactaremos al número <strong>${order.phone || '---'}</strong>.`;
   }
 
   if (productPage) productPage.hidden = true;
@@ -509,9 +463,11 @@ function closeConfirmation() {
   showProduct();
 }
 
-buyButton?.addEventListener('click', (event) => {
-  event.preventDefault();
-  showCheckout();
+document.querySelectorAll('a[href="#checkout"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    showCheckout();
+  });
 });
 
 backLink?.addEventListener('click', (event) => {
@@ -525,31 +481,11 @@ confirmation?.addEventListener('click', (event) => {
   if (event.target.id === 'confirmation') closeConfirmation();
 });
 quantitySelect?.addEventListener('change', updateOrderSummary);
-document.querySelector('#footerQuantitySelect')?.addEventListener('change', updateFooterSummary);
-document.querySelector('#footerColorSelect')?.addEventListener('change', updateFooterSummary);
 cityInput?.addEventListener('input', updateDeliveryNotice);
 updateOrderSummary();
-updateFooterSummary();
 updateDeliveryNotice();
 initMapPicker();
 initFormDeliveryNotices();
-
-function initFormTracking() {
-  let formStarted = false;
-  orderForms.forEach((form) => {
-    const inputs = form.querySelectorAll('input, select, textarea');
-    inputs.forEach((input) => {
-      input.addEventListener('focus', () => {
-        if (!formStarted) {
-          formStarted = true;
-          trackLandingEvent('form_start');
-        }
-      }, { once: true });
-    });
-  });
-}
-
-initFormTracking();
 fireTracking('ga4:page_view', () => trackGA('page_view'));
 trackLandingEvent('view_content');
 
@@ -562,39 +498,35 @@ orderForms.forEach((form) => form.addEventListener('submit', async (event) => {
   const submitButton = form.querySelector('button[type="submit"]');
   const currentFormError = form.querySelector('.form-error') || formError;
 
+  const city = cleanText(formData.get('city'));
+  const address = cleanText(formData.get('address'));
+  const neighborhood = cleanText(formData.get('neighborhood'));
+  const notes = cleanReferenceNote(formData.get('notes'), city);
+  const mapUrl = cleanText(formData.get('map'));
+  const subtotal = pricesByQuantity[quantity] || pricesByQuantity[1];
+  const paymentMode = isCashOnDeliveryArea(city) ? 'cash_on_delivery' : 'deposit_required_for_interior';
+  const referenceParts = [`Color: ${color}`];
+  if (notes) referenceParts.push(`Referencia: ${notes}`);
+  referenceParts.push(paymentMode === 'cash_on_delivery' ? 'Pago contra entrega' : 'Interior: coordinar abono previo');
+
   const order = {
     id: generateOrderNumber(),
-    product: CONFIG.productName,
-    combo: `${getComboName(quantity)} | Color: ${color}`,
-    quantity,
-    total: pricesByQuantity[quantity] || pricesByQuantity[1],
-    customer_name: String(formData.get('name') || '').trim(),
-    customer_phone: String(formData.get('phone') || '').trim(),
-    city: String(formData.get('city') || '').trim(),
-    address: String(formData.get('address') || '').trim(),
-    neighborhood: String(formData.get('neighborhood') || '').trim(),
-    reference: String(formData.get('notes') || '').trim(),
-    maps_url: String(formData.get('map') || '').trim(),
-    paymentMode: isCashOnDeliveryArea(String(formData.get('city') || '')) ? 'cash_on_delivery' : 'deposit_required_for_interior',
-    status: 'pending_confirmation',
+    producto: CONFIG.productName,
+    precio: CONFIG.productPrice,
+    cantidad: quantity,
+    subtotal,
+    nombre: cleanText(formData.get('name')),
+    telefono: cleanText(formData.get('phone')),
+    correo: 'No informado',
+    ci: 'No informado',
+    departamento: getDeliveryZone(city),
+    ciudad: city,
+    direccion: address || 'No informado',
+    referencia: referenceParts.join(' | '),
+    ubicacion_maps: mapUrl || 'No informado',
+    estado: 'Pendiente',
+    origen: CONFIG.origin,
     created_at: new Date().toISOString(),
-  };
-
-  const supabaseOrder = {
-    id: order.id,
-    product: order.product,
-    combo: order.combo,
-    quantity: order.quantity,
-    total: order.total,
-    customer_name: order.customer_name,
-    customer_phone: order.customer_phone,
-    city: order.city,
-    address: order.address,
-    neighborhood: order.neighborhood,
-    reference: `${order.reference}${order.paymentMode === 'deposit_required_for_interior' ? ' | Interior: coordinar seña previa' : ' | Pago contra entrega'}`,
-    maps_url: order.maps_url,
-    status: order.status,
-    created_at: order.created_at,
   };
 
   if (currentFormError) currentFormError.textContent = '';
@@ -605,11 +537,9 @@ orderForms.forEach((form) => form.addEventListener('submit', async (event) => {
 
   try {
     saveOrder(order);
-    await saveOrderToSupabase(supabaseOrder);
+    await saveOrderToSupabase(order);
     const payload = trackingPayload(quantity);
-    trackLandingEvent('purchase', payload);
     trackLandingEvent('lead', payload);
-    trackLandingEvent('form_complete', payload);
   } catch (error) {
     console.error(error);
     if (currentFormError) currentFormError.textContent = 'No se pudo guardar el pedido. Revisá la conexión o la configuración de Supabase.';
@@ -628,9 +558,9 @@ orderForms.forEach((form) => form.addEventListener('submit', async (event) => {
     submitButton.disabled = false;
     submitButton.textContent = 'Realizar pedido';
   }
-  showConfirmation({
-    id: order.id,
-    phone: order.customer_phone,
-    paymentMode: order.paymentMode,
-  });
+    showConfirmation({
+      id: order.id,
+      phone: order.telefono,
+      paymentMode,
+    });
 }));
