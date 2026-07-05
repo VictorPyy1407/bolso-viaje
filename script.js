@@ -558,9 +558,51 @@ orderForms.forEach((form) => form.addEventListener('submit', async (event) => {
     submitButton.disabled = false;
     submitButton.textContent = 'Realizar pedido';
   }
-    showConfirmation({
+showConfirmation({
       id: order.id,
       phone: order.telefono,
       paymentMode,
     });
-}));
+  }));
+
+// Visitor tracking
+(function () {
+  const cfg = CONFIG;
+  const SUPABASE_URL = cfg.supabaseUrl;
+  const SUPABASE_KEY = cfg.supabaseAnonKey;
+  const TRACK_URL = `${SUPABASE_URL}/functions/v1/track-visitor`;
+  let sessionId = sessionStorage.getItem('lp_session_id') || 'sess_' + Math.random().toString(36).substring(2, 15) + '_' + Date.now().toString(36);
+  sessionStorage.setItem('lp_session_id', sessionId);
+  let hbInterval = null;
+  let hidden = false;
+
+  function send(event, extra = {}) {
+    if (!SUPABASE_URL || !SUPABASE_KEY) return;
+    const params = new URLSearchParams(window.location.search);
+    fetch(TRACK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` },
+      body: JSON.stringify({
+        event, sessionId, pageUrl: location.href, pageTitle: document.title,
+        referrer: document.referrer, userAgent: navigator.userAgent,
+        screenResolution: `${screen.width}x${screen.height}`, viewport: `${innerWidth}x${innerHeight}`,
+        landingPage: cfg.origin || 'landing_bolso_impermeable', timestamp: new Date().toISOString(),
+        utmSource: params.get('utm_source'), utmMedium: params.get('utm_medium'),
+        utmCampaign: params.get('utm_campaign'), utmContent: params.get('utm_content'),
+        utmTerm: params.get('utm_term'), ...extra
+      }),
+      keepalive: event === 'page_hide'
+    }).catch(() => {});
+  }
+
+  function startHb() { if (!hbInterval) hbInterval = setInterval(() => { if (!hidden && document.visibilityState === 'visible') send('heartbeat'); }, 30000); }
+  function stopHb() { if (hbInterval) { clearInterval(hbInterval); hbInterval = null; } }
+  document.addEventListener('visibilitychange', () => { hidden = document.hidden; if (hidden) { send('page_hide'); stopHb(); } else { send('page_view'); startHb(); } });
+  window.addEventListener('beforeunload', () => send('page_hide'));
+  window.addEventListener('pagehide', () => send('page_hide'));
+
+  send('page_view');
+  startHb();
+
+  window.VisitorTracker = { trackEvent: send, trackEcommerce: (evt, data) => send(evt, { productName: data?.productName || cfg.productName, productPrice: data?.productPrice || cfg.productPrice, orderId: data?.orderId, revenue: data?.revenue }), getSessionId: () => sessionId };
+})();
