@@ -2,11 +2,11 @@ const thumbs = document.querySelectorAll('.thumb');
 const mainImage = document.querySelector('#mainProductImage');
 const CONFIG = {
   productName: 'Bolso Impermeable',
-  productPrice: 199000,
+  productPrice: 219000,
   currency: 'PYG',
   origin: 'landing_bolso_impermeable',
   supabaseUrl: 'https://roruinqorwgolcrhhmpm.supabase.co',
-  supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJvcnVpbnFvcndnb2xjcmhobXBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI2NTU0MDcsImV4cCI6MjA5ODIzMTQwN30.VzNSqYUM6amTOToZUsJ7Emjapy-y9Y44hDmbC1XG9Eg',
+  supabaseAnonKey: 'sb_publishable_aRPb1yNunMEheat00BxwtQ_Uft732KJ',
   supabaseTable: 'pedidos_web',
 };
 
@@ -26,16 +26,6 @@ function trackingPayload(quantity = Number(document.querySelector('#quantitySele
 }
 
 
-function metaPayload(payload) {
-  return {
-    content_name: CONFIG.productName,
-    content_type: 'product',
-    value: payload.subtotal,
-    currency: CONFIG.currency,
-    quantity: payload.cantidad,
-  };
-}
-
 function fireTracking(key, callback) {
   if (trackingFired.has(key)) return;
   trackingFired.add(key);
@@ -48,27 +38,19 @@ function trackGA(eventName, payload = trackingPayload()) {
   window.dataLayer.push({ event: eventName, ...payload });
 }
 
-function trackMeta(eventName, payload = trackingPayload()) {
-  if (typeof window.fbq === 'function') window.fbq('track', eventName, metaPayload(payload));
-}
-
 function trackLandingEvent(eventName, payload = trackingPayload()) {
   const events = {
     view_content: () => {
       fireTracking('ga4:view_item', () => trackGA('view_item', payload));
-      fireTracking('meta:ViewContent', () => trackMeta('ViewContent', payload));
     },
     add_to_cart: () => {
       fireTracking('ga4:add_to_cart', () => trackGA('add_to_cart', payload));
-      fireTracking('meta:AddToCart', () => trackMeta('AddToCart', payload));
     },
     begin_checkout: () => {
       fireTracking('ga4:begin_checkout', () => trackGA('begin_checkout', payload));
-      fireTracking('meta:InitiateCheckout', () => trackMeta('InitiateCheckout', payload));
     },
     lead: () => {
       fireTracking('ga4:generate_lead', () => trackGA('generate_lead', payload));
-      fireTracking('meta:Lead', () => trackMeta('Lead', payload));
     },
   };
   events[eventName]?.();
@@ -79,16 +61,14 @@ const thumbIndexToColor = {
   0: null,
   1: 'Rosa',
   2: 'Lila',
-  3: 'Gris',
-  4: 'Negro'
+  3: 'Gris'
 };
 
 // Map color name to image source
 const colorToImageSrc = {
   'Rosa': 'img/rosa.jpeg',
   'Lila': 'img/Lila.jpeg',
-  'Gris': 'img/Gris.jpg',
-  'Negro': 'img/Negro.jpg'
+  'Gris': 'img/Gris.jpg'
 };
 
 function updateColorDropdowns(color) {
@@ -174,9 +154,9 @@ let map;
 let mapMarker;
 let selectedMapLink = '';
 const pricesByQuantity = {
-  1: 199000,
-  2: 369000,
-  3: 525000,
+  1: 219000,
+  2: 405000,
+  3: 575000,
 };
 
 function formatGuarani(value) {
@@ -545,7 +525,7 @@ orderForms.forEach((form) => form.addEventListener('submit', async (event) => {
     if (currentFormError) currentFormError.textContent = 'No se pudo guardar el pedido. Revisá la conexión o la configuración de Supabase.';
     if (submitButton) {
       submitButton.disabled = false;
-      submitButton.textContent = 'Realizar pedido';
+      submitButton.textContent = 'Confirmar Pedido';
     }
     return;
   }
@@ -556,9 +536,9 @@ orderForms.forEach((form) => form.addEventListener('submit', async (event) => {
   updateColorDropdowns('Rosa'); // Reset color back to default in UI
   if (submitButton) {
     submitButton.disabled = false;
-    submitButton.textContent = 'Realizar pedido';
+    submitButton.textContent = 'Confirmar Pedido';
   }
-showConfirmation({
+  showConfirmation({
       id: order.id,
       phone: order.telefono,
       paymentMode,
