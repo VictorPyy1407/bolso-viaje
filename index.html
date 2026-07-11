@@ -1,350 +1,712 @@
 <!DOCTYPE html>
-<html lang="es-PY">
+<html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bolso de Viaje Expandible Impermeable | VG Shop Py</title>
-  <meta name="description" content="Bolso de viaje expandible e impermeable multiuso con delivery gratis a Asunción y Central y pago al recibir.">
-  <link rel="icon" type="image/png" href="img/VGshop Logo.png">
-  <link rel="apple-touch-icon" href="img/VGshop Logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css">
+  <meta name="description"
+    content="Bolso de Viaje Multifunción — Gran capacidad, impermeable y con compartimiento para zapatos. Pago contra entrega en Paraguay.">
+  <meta name="theme-color" content="#a3e635">
+  <title>Bolso Viajera XL — Pago Contra Entrega | VG Shop PY</title>
+
+  <!-- SEO Meta Tags -->
+  <meta property="og:title" content="Bolso Viajera XL — Estilo, Espacio y Libertad">
+  <meta property="og:description"
+    content="Bolso multifuncional impermeable con compartimiento para zapatos. 4 colores. Envío gratis y pago contra entrega en todo Paraguay.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/main.png">
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MWP3LRKX');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8WM6CYEB73"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8WM6CYEB73', { send_page_view: false });
-  </script>
-
 </head>
-<body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWP3LRKX"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
-  <header class="topbar">
-    <a class="brand" href="#">
-      <img class="brand-logo" src="img/VGshop Logo.png" alt="VG Shop Py">
-      <span>VG Shop Py</span>
-    </a>
-    <div class="header-status" aria-label="Pedido por formulario">
-      <span></span>
-      Pedido seguro por la página
+<body>
+
+  <!-- Sticky Header -->
+  <header class="header">
+    <div class="container header-content">
+      <a href="#" class="logo">
+        <img src="./images/VGshop Logo.png" alt="logo" class="logo-img">
+        <!-- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"> -->
+        <path d="M22 12A10 10 0 1 1 12 2v10z"></path>
+        </svg>
+        <span>VG SHOP PY<span class="logo-accent"></span></span>
+      </a>
+      <div class="header-tag">CONTRA ENTREGA</div>
+      <div class="header-tag">ENVÍO GRATIS · ASU Y CENTRAL</div>
     </div>
   </header>
 
   <main>
-    <section class="hero" id="producto" data-page="product">
-      <div class="product-grid">
-        <div class="gallery" aria-label="Galería de producto">
-          <button class="gallery-arrow gallery-arrow-left" type="button" aria-label="Imagen anterior">‹</button>
-          <button class="gallery-arrow gallery-arrow-right" type="button" aria-label="Siguiente imagen">›</button>
-<div class="main-image">
-            <img id="mainProductImage" src="img/PROD20260423_69ea3f74e8023.jpg" alt="Bolso de Viaje Expandible">
-          </div>
-          <div class="thumbs">
-            <button class="thumb active" type="button" data-image="img/PROD20260423_69ea3f74e8023.jpg" aria-label="Ver producto">
-              <img src="img/PROD20260423_69ea3f74e8023.jpg" alt="Bolso de Viaje Expandible">
-            </button>
-            <button class="thumb" type="button" data-image="img/rosa.jpeg" aria-label="Ver bolso Rosa">
-              <img src="img/rosa.jpeg" alt="Bolso Rosa">
-            </button>
-            <button class="thumb" type="button" data-image="img/Lila.jpeg" aria-label="Ver bolso Lila">
-              <img src="img/Lila.jpeg" alt="Bolso Lila">
-            </button>
-            <button class="thumb" type="button" data-image="img/Gris.jpg" aria-label="Ver bolso Gris">
-              <img src="img/Gris.jpg" alt="Bolso Gris">
-            </button>
-          </div>
-        </div>
 
-        <article class="details">
-          <div class="offer-card" aria-label="Oferta por tiempo limitado">
-            <span class="clock" aria-hidden="true"></span>
-            <span>¡Oferta por tiempo limitado!</span>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
 
-          <div class="benefit-ticker" aria-label="Beneficios de compra">
-            <div class="benefit-track">
-              <span>Envío Gratis Asunción y Central</span>
-              <span>Pagás al recibir</span>
-              <span>Entrega en 24-48 hs</span>
-              <span>Stock disponible</span>
-              <span>Envío Gratis Asunción y Central</span>
-              <span>Pagás al recibir</span>
-              <span>Entrega en 24-48 hs</span>
-              <span>Stock disponible</span>
-            </div>
-          </div>
-
-          <h1>Bolso de Viaje Expandible Impermeable</h1>
-          <div class="price-row">
-            <span class="price">Gs. 219.000</span>
-            <span class="old-price">Gs. 300.000</span>
-            <span class="discount">27% Descuento</span>
-          </div>
-
-          <div class="actions">
-            <a class="primary-cta" id="pedido" href="#checkout">
-              <svg class="bag-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 9V7a5 5 0 0 1 10 0v2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-                <path d="M5.4 9h13.2l-.9 10.1A2.1 2.1 0 0 1 15.6 21H8.4a2.1 2.1 0 0 1-2.1-1.9L5.4 9Z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
-                <path d="M9 13h.01M15 13h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <!-- Left Side: Copy and Price -->
+        <div class="hero-text">
+          <div class="hero-tagline">
+            <span class="badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
               </svg>
-              <span>Reservar mi bolso ahora<br><small>Completá el formulario y pagás al recibir</small></span>
+              Bolso de Viaje Multifunción
+            </span>
+          </div>
+
+          <h1 class="hero-title">BOLSO MULTIFUNCIONAL PARA VIAJAR, ENTRENAR Y TRABAJAR</h1>
+
+          <p class="hero-description">
+            Llevá todo lo que necesitás con un diseño moderno, resistente e impermeable.
+            Cuenta con gran capacidad, compartimento para calzado y múltiples bolsillos para mantener todo perfectamente
+            organizado. Ideal para gimnasio, viajes, oficina o uso diario.
+          </p>
+
+          <div class="price-box">
+            <div class="price-container">
+              <span class="price-current">Gs. 199.000</span>
+              <span class="price-old">Gs. 260.000</span>
+            </div>
+
+            <a href="#checkout-section" class="btn" id="hero-cta-btn">
+              Equipar Ahora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
             </a>
+
+            <span class="price-footnote">Pago en puerta • Logística local garantizada</span>
           </div>
-
-          <div class="trust-row" aria-label="Beneficios de compra">
-            <span>Envío seguro</span>
-            <span>Compra protegida</span>
-            <span>Atención al cliente</span>
-          </div>
-
-          <section class="description">
-            <h2>Descripción</h2>
-            <p><strong>Bolso de Viaje Expandible e Impermeable Multiuso</strong><br>
-            El compañero perfecto para tus viajes, gimnasio o escapadas de fin de semana. Este bolso destaca por su diseño inteligente con base expandible con cremallera, que te permite ampliar su capacidad cuando lo necesites. Está confeccionado en tela Oxford de alta densidad, completamente resistente al desgaste e impermeable, manteniendo tus pertenencias secas y protegidas.<br><br>
-            <strong>Características destacadas:</strong><br>
-            • <strong>Capacidad Expandible:</strong> Se expande fácilmente agregando hasta 12 cm de altura en su parte inferior.<br>
-            • <strong>Separación Húmedo/Seco:</strong> Cuenta con un bolsillo impermeable interno para guardar ropa mojada, toallas o artículos de tocador.<br>
-            • <strong>Compartimento para Calzado:</strong> Espacio independiente con cremallera lateral para calzados, manteniéndolos separados de tu ropa limpia.<br>
-            • <strong>Banda de Sujeción (Trolley Sleeve):</strong> Deslizalo fácilmente sobre la manija de tu maleta con ruedas para moverte cómodamente en aeropuertos.<br>
-            • <strong>Multiuso y Portátil:</strong> Ideal para viajes, entrenamiento deportivo, camping o uso diario. Apto como equipaje de mano en cabina.</p>
-            <div class="conversion-points" aria-label="Razones para comprar">
-              <span>Sin pago adelantado en Asunción y Central</span>
-              <span>Confirmamos el pedido antes de enviar</span>
-              <span>Cambio por defecto de fábrica</span>
-            </div>
-</section>
-        </article>
-      </div>
-    </section>
-
-    <section class="checkout-page" id="checkout" data-page="checkout" hidden>
-      <div class="checkout-shell">
-        <a class="back-link" href="#producto" aria-label="Volver al producto">← Volver al Producto</a>
-        <button class="checkout-close" type="button" aria-label="Cerrar checkout">×</button>
-
-        <div class="checkout-header">
-          <small>PAGO SEGURO CONTRA ENTREGA</small>
-          <h2>Finalizar Pedido</h2>
         </div>
 
-        <form class="checkout-form" id="purchaseForm" data-order-form>
-          <section class="checkout-product">
-            <img id="checkoutProductImage" src="img/PROD20260423_69ea3f74e8023.jpg" alt="Bolso de Viaje Expandible">
-            <div>
-              <strong>Bolso de Viaje Expandible</strong>
-              <span id="productPriceTop">Gs. 219.000</span>
-              <small>Envío gratis a Asunción y Central - Pagás al recibir</small>
+        <!-- Right Side: Interactive Gallery -->
+        <div class="gallery">
+          <div class="gallery-main-wrapper">
+            <div class="gallery-badge">
+              <div class="gallery-dot"></div>
+              <span class="badge-text"></span>
+              <!-- style="font-size: 0.65rem; font-weight: 900; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase;">Conducción Ósea</span>  -->
             </div>
-          </section>
+            <div class="gallery-counter"><span id="gallery-current-idx">1</span> / 4</div>
 
-          <label>
-            <span>Nombre y Apellido</span>
-            <input type="text" name="name" autocomplete="name" required placeholder="Ej: María González">
-          </label>
+            <button class="gallery-nav-btn gallery-nav-prev" id="gallery-prev" aria-label="Anterior">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="gallery-nav-btn gallery-nav-next" id="gallery-next" aria-label="Siguiente">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
 
-          <label>
-              <span>Teléfono de contacto</span>
-            <input type="tel" name="phone" autocomplete="tel" required placeholder="Ej: 0981 123 456">
-          </label>
-
-          <label>
-            <span>Ciudad</span>
-            <input type="text" name="city" id="cityInput" autocomplete="address-level2" required placeholder="Ej: Asunción">
-          </label>
-
-          <div class="delivery-notice" id="deliveryNotice">
-            <strong>Formas de pago:</strong> Asunción y Central: envío gratis y pago contra entrega. Interior: te contactamos para coordinar el abono antes del despacho.
+            <img src="./images/Imagen principal.jpg" alt="Aeropulse Pro - Vista Principal" class="gallery-main-img"
+              id="gallery-main">
           </div>
 
-          <label>
-            <span>Color del Bolso</span>
-            <select name="color" id="colorSelect">
-              <option value="Rosa">Rosa (Fucsia)</option>
-              <option value="Lila">Lila</option>
-              <option value="Gris">Gris</option>
-            </select>
-          </label>
+          <div class="gallery-thumbs">
+            <div class="gallery-thumb active" data-index="0">
+              <img src="./images/Bolso-Gris.jpg" alt="Aeropulse Pro - Miniatura 1">
+            </div>
+            <div class="gallery-thumb" data-index="1">
+              <img src="./images/Bolso-Negro.jpg" alt="Aeropulse Pro - Miniatura 2">
+            </div>
+            <div class="gallery-thumb" data-index="2">
+              <img src="./images/Bolso-Rosa.jpg" alt="Aeropulse Pro - Miniatura 3">
+            </div>
+            <div class="gallery-thumb" data-index="3">
+              <img src="./images/Bolso-Gris.jpg" alt="Aeropulse Pro - Miniatura 4">
+            </div>
+          </div>
+        </div>
 
-          <label>
-            <span>Cantidad</span>
-            <select name="quantity" id="quantitySelect">
-              <option value="1" data-price="219000">1 unidad - Gs. 219.000</option>
-              <option value="2" data-price="405000">2 unidades - Gs. 405.000</option>
-              <option value="3" data-price="575000">3 unidades - Gs. 575.000</option>
+      </div>
+    </section>
+    <!-- 
+   Specs Grid Section -->
+    <!-- <section class="specs">
+      <div class="container">
+        <div class="specs-grid">
+          <div class="spec-card">
+            <span class="spec-value">IP67</span>
+            <span class="spec-label">Resistencia al Agua</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-value">29g</span>
+            <span class="spec-label">Peso Ultraligero</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-value">BT 5.2</span>
+            <span class="spec-label">Latencia Cero</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-value">8 Hrs</span>
+            <span class="spec-label">Batería de Uso</span>
+          </div>
+        </div>
+      </div>
+    </section>  -->
 
-            </select>
-          </label>
+    <!-- Biomechanics Section (FAQ style accordion) -->
+    <section class="accordion-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Lo que lo hace diferente. <span>.</span></h2>
+        </div>
 
-          <details class="optional-fields">
-            <summary>Más detalles</summary>
-            <label>
-              <span>Dirección</span>
-              <textarea name="address" rows="2" autocomplete="street-address" placeholder="Calle, número, zona"></textarea>
-            </label>
-            <label>
-              <span>Barrio</span>
-              <input type="text" name="neighborhood" placeholder="Ej: Villa Morra">
-            </label>
-            <label>
-              <span>Referencia</span>
-              <input type="text" name="notes" placeholder="Ej: Casa color blanco, portón negro">
-            </label>
-            <label class="map-field">
-              <span>Ubicación Maps</span>
-              <div class="location-row">
-                <input type="url" name="map" id="mapsInput" placeholder="Pegá enlace de Google Maps" readonly>
-                <button type="button" data-open-map>Marcar en mapa</button>
+        <div class="accordion-group">
+          <div class="accordion-item active">
+            <button class="accordion-trigger" id="acc-trigger-1">
+              <span><span class="accordion-trigger-num">01 //</span> Compartimiento Exclusivo para Zapatos
+              </span>
+              <span class="accordion-icon">-</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                Diseñado con un compartimiento inferior independiente para que tus zapatos nunca toquen tu ropa. Ideal
+                para
+                ir al gym, un viaje de fin de semana o un evento especial. Separá lo limpio de lo sucio sin esfuerzo.
               </div>
-            </label>
-          </details>
+            </div>
+          </div>
 
-          <button class="order-button pulse-buy" type="submit">
-            <span class="btn-text">Confirmar Pedido</span>
-            <span class="btn-loader hidden"><span class="spinner"></span> Procesando...</span>
-          </button>
+          <div class="accordion-item">
+            <button class="accordion-trigger" id="acc-trigger-2">
+              <span><span class="accordion-trigger-num">02 //</span> Material 100% Impermeable
+              </span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                Fabricado en nylon de alta densidad con tratamiento repelente al agua. Una lluvia inesperada,
+                salpicaduras en el aeropuerto, nada penetra. Tu ropa y tus cosas llegan secas a destino.
 
-          <section class="order-summary">
-            <h3>Resumen del pedido</h3>
-            <dl>
-              <div><dt>Producto elegido</dt><dd>Bolso de Viaje Expandible - <span id="summaryQuantityText">1 unidad</span></dd></div>
-              <div><dt>Color</dt><dd id="summaryColor">Rosa</dd></div>
-              <div><dt>Cantidad</dt><dd id="summaryQuantity">1 unidad</dd></div>
-              <div><dt>Envío</dt><dd class="free">Gratis (Asunción y Central)</dd></div>
-              <div><dt>Total a pagar</dt><dd class="total" id="summaryTotal">Gs. 219.000</dd></div>
-            </dl>
-            <p id="paymentNote">No pagás nada ahora. Registrás el pedido y te contactamos para confirmar antes del envío.</p>
-          </section>
+              </div>
+            </div>
+          </div>
 
-          <small class="secure-note">Plataforma segura. Tus datos están protegidos</small>
-          <p class="form-error" id="formError" role="alert"></p>
-        </form>
-
-      </div>
-    </section>
-
-    <section class="map-modal hidden" id="mapModal" aria-modal="true" role="dialog" aria-labelledby="mapTitle">
-      <div class="map-dialog">
-        <div class="map-header">
-          <h2 id="mapTitle">Buscar y marcar en el mapa</h2>
-          <button type="button" data-close-map aria-label="Cerrar mapa">×</button>
+          <div class="accordion-item">
+            <button class="accordion-trigger" id="acc-trigger-3">
+              <span><span class="accordion-trigger-num">03 //</span> Organización Inteligente
+              </span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                Bolsillo frontal magnético para documentos, bolsillo lateral de acceso rápido para el celular, y
+                compartimento principal de 45 litros con cremallera doble. Todo en el lugar correcto, siempre.
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="map-search">
-          <input type="search" id="mapSearch" placeholder="Buscar dirección o lugar">
-          <button type="button" id="mapSearchButton">Buscar</button>
+      </div>
+    </section>
+
+    <!-- Rotating Marquee -->
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <div class="marquee-item"><span>✦ COMPARTIMIENTO PARA ZAPATOS</span><span>
+          </span><span class="marquee-separator"></span><span>CIENCIA DEPORTIVA</span><span
+            class="marquee-separator"></span></div>
+        <div class="marquee-item"><span>✦ GRAN CAPACIDAD</span><span class="marquee-separator"></span><span>
+          </span><span class="marquee-separator"></span><span>✦ IMPERMEABLE</span><span
+            class="marquee-separator"></span></div>
+        <div class="marquee-item"><span>✦ ENVÍO A TODO PARAGUAY/span><span class="marquee-separator">
+            </span><span class="marquee-separator"></span><span></span><span class="marquee-separator"></span></div>
+        <div class="marquee-item"><span>✦ PAGO CONTRA ENTREGA</span><span class="marquee-separator"></span><span>
+          </span><span class="marquee-separator"></span><span></span><span class="marquee-separator"></span></div>
+      </div>
+    </div>
+
+    <!-- Athlete Evolution Section (Card Grid) -->
+    <section class="use-cases">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">EVOLUCIÓN <span>ATLETA.</span></h2>
         </div>
-        <div class="map-picker" id="mapPicker" aria-label="Mapa para seleccionar ubicación"></div>
-        <div class="map-link-row">
-          <input type="url" id="mapLinkInput" placeholder="Pegar enlace de Google Maps">
-          <a id="mapOpenLink" href="https://www.google.com/maps" target="_blank" rel="noopener">Abrir ↗</a>
+
+        <div class="cases-grid">
+          <!-- Card 1 -->
+          <div class="case-card">
+            <div class="case-img-container">
+              <img src="./images/Viajes de Fin de Semana3.png" alt="Viajes de Fin de Semana" class="case-img">
+            </div>
+            <h3 class="case-title">Viajes de Fin de Semana</h3>
+            <p class="case-description">
+              Entra como equipaje de mano en la mayoría de los vuelos. Espacioso y organizado para 2 o 3 días fuera.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="case-card">
+            <div class="case-img-container">
+              <img src="./images/Gym & Deportea.png" alt="Gym & Deporte" class="case-img">
+            </div>
+            <h3 class="case-title">Gym & Deporte
+            </h3>
+            <p class="case-description">
+              El compartimiento para zapatos lo convierte en el bolso de gym perfecto: ropa limpia separada, zapatillas
+              abajo.
+
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="case-card">
+            <div class="case-img-container">
+              <img src="images/trabajo y Diario.png" alt="Trabajo y Diario" class="case-img">
+            </div>
+            <h3 class="case-title">Trabajo y Diario
+            </h3>
+            <p class="case-description">
+              Cabe la notebook, los documentos, el lunch y todo lo que necesitás para el día. Sin comprometer el estilo.
+
+            </p>
+          </div>
         </div>
-        <p class="map-error" id="mapError" role="alert"></p>
-        <button type="button" class="map-confirm" id="mapConfirm">Confirmar ubicación</button>
       </div>
     </section>
 
-    <section class="info-banners" aria-label="Información del producto">
-      <img src="img/Bolson1.png" alt="Bolso de viaje expandible vista frontal">
-      <img src="img/Bolson2.png" alt="Sleeve trasero del bolso para sujetar a maletas">
-      <img src="img/Bolson3.png" alt="Vistas expandida y normal del bolso">
-      <img src="img/Bolson4.png" alt="Compartimento impermeable interno y de calzado">
+    <!-- Plug and Play / Steps Section -->
+    <!-- <section class="steps">
+      <div class="container steps-grid">
+        <div class="steps-list">
+          <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">El duelo de bolsos.
+            <span></span>
+          </h2> -->
+    <!-- 
+          <div class="step-item">
+            <span class="step-num">01</span>
+            <div>
+              <h3 class="step-title">Emparejamiento Rápido</h3>
+              <p class="step-desc">Mantén presionado el botón "+" durante 3 segundos, vincúlalo desde la configuración
+                Bluetooth de tu móvil y listo.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-num">02</span>
+            <div>
+              <h3 class="step-title">Ajuste Ergonómico</h3>
+              <p class="step-desc">Cuelga los arcos detrás de tus orejas para que los transductores reposen sobre tus
+                pómulos, dejando el oído libre.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-num">03</span>
+            <div>
+              <h3 class="step-title">Control Integrado</h3>
+              <p class="step-desc">Botones físicos resistentes al agua ubicados de forma táctica para cambiar de canción
+                o responder llamadas en movimiento.</p>
+            </div>
+          </div>
+        </div> -->
+
+    <!-- 
+    <div class="steps-banner">
+      <div class="steps-banner-inner">
+        <img src="./images/IMG_31.png" alt="steps-banner" class="steps-banner-img">
+      </div>
+    </div> -->
+    <!-- <div class="steps-list">
+      <h2 class="section-title" style="text-align:left; margin-bottom:2rem;">
+        ¿Por qué elegir <span>nuestro bolsón?</span>
+      </h2> -->
+
+    <div class="comparison-image">
+      <img src="./images/imgi_9_SLIDER20260612_6a2c83e8584c1.jpg" alt="Comparación bolsón impermeable">
+    </div>
+    </div>
+    <!-- Comparison Table Section -->
+    <!-- <section class="comparison">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title"> <span></span></h2>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th class="active-col">AEROPULSE PRO</th>
+                <th>In-Ear Clásicos (TWS)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="label-col">Seguridad en Ruta</td>
+                <td class="active-col">Alta (Oído Destapado)</td>
+                <td class="inactive-col">Nula (Aislamiento Acústico)</td>
+              </tr>
+              <tr>
+                <td class="label-col">Higiene Auditiva</td>
+                <td class="active-col">Excelente (Sin intrusión)</td>
+                <td class="inactive-col">Propicia infecciones por humedad</td>
+              </tr>
+              <tr>
+                <td class="label-col">Estabilidad Física</td>
+                <td class="active-col">Inamovible (Arco de Titanio)</td>
+                <td class="inactive-col">Fácil caída con sudor y rebote</td>
+              </tr>
+              <tr>
+                <td class="label-col">Aislamiento Pasivo</td>
+                <td class="active-col">No tiene (Seguridad total)</td>
+                <td class="inactive-col">Completo (Peligroso al aire libre)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section> -->
+    <section class="payment-security">
+      <div class="payment-card">
+
+        <h2>
+          🔒 Compra Sin Riesgo.
+        </h2>
+
+        <p class="payment-text">
+          No necesitás pagar por adelantado. Realizá tu pedido en minutos y nuestro equipo se encargará del resto.
+        </p>
+
+        <div class="payment-step">
+          <span>1</span>
+          <p><strong>Completá el formulario</strong> con tu nombre, teléfono y dirección.</p>
+        </div>
+
+        <div class="payment-step">
+          <span>2</span>
+          <p><strong>Confirmamos tu pedido</strong> por WhatsApp o llamada antes del envío.</p>
+        </div>
+
+        <div class="payment-step">
+          <span>3</span>
+          <p><strong>Recibí el bolsón y pagá al recibir</strong> en efectivo, de forma rápida y segura.</p>
+        </div>
+
+      </div>
     </section>
 
-    <section class="benefits-section" id="beneficios">
-      <div class="section-heading">
-        <span>Beneficios</span>
-        <h2>Más capacidad, más orden y menos preocupaciones</h2>
-        <p>Diseñado para viajes, gimnasio, trabajo y escapadas de fin de semana.</p>
+    <!-- Trust Banner -->
+    <!-- <section class="trust-banner">
+      <div class="container">
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="trust-title">Riesgo Financiero Cero.</h3>
+            <p class="trust-text">
+              No necesitas ingresar tarjetas ni transferencias previas. Reserva tu producto, nuestro equipo
+              logístico lo
+              llevará a tu domicilio y realizas el pago en efectivo o transferencia bancaria directo al
+              repartidor.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="benefits-grid">
-        <article class="benefit-card"><h3>Capacidad expandible</h3><p>Ampliá el espacio cuando necesitás llevar más ropa, accesorios o compras.</p></article>
-        <article class="benefit-card"><h3>Impermeable</h3><p>Ayuda a proteger tus pertenencias de salpicaduras, humedad y lluvia ligera.</p></article>
-        <article class="benefit-card"><h3>Separación húmedo/seco</h3><p>Guardá toallas, ropa mojada o artículos personales sin mezclar todo.</p></article>
-        <article class="benefit-card"><h3>Compartimento para calzado</h3><p>Llevá tus zapatos separados de la ropa limpia de forma práctica.</p></article>
-        <article class="benefit-card"><h3>Ideal para equipaje de mano</h3><p>Compacto, liviano y fácil de llevar para viajes cortos o uso diario.</p></article>
-        <article class="benefit-card"><h3>Organización inteligente</h3><p>Bolsillos y espacios pensados para encontrar todo más rápido.</p></article>
+    </section> -->
+
+    <!-- FAQ Section -->
+    <section class="faq">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">PREGUNTAS FRECUENTES <span>(FAQ)</span></h2>
+        </div>
+
+        <div class="accordion-group">
+          <div class="accordion-item">
+            <button class="accordion-trigger" id="faq-trigger-1">
+              <span>¿El compartimiento para zapatos es separado del resto?
+              </span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                Sí, es un compartimento completamente independiente con cierre de cremallera en la parte inferior del
+                bolso. Tus zapatos no tienen contacto con la ropa ni los accesorios del compartimento principal.
+
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" id="faq-trigger-2">
+              <span>¿Cuánto demora el envío a todo Paraguay?
+              </span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                En Asunción y Gran Asunción: 24 a 48 horas. En el interior del país: 3 a 5 días hábiles dependiendo del
+                departamento. Te informamos el seguimiento por WhatsApp.
+
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" id="faq-trigger-3">
+              <span>¿Entra como equipaje de mano en el avión?
+              </span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                Generalmente sí, dependiendo de la aerolínea. Las dimensiones son compatibles con la mayoría de las
+                políticas de equipaje de mano. Recomendamos verificar con tu aerolínea antes del vuelo.
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="comparison-section" id="comparativa">
-      <div class="section-heading">
-        <span>Comparativa</span>
-        <h2>¿Por qué elegir este bolso impermeable?</h2>
-        <p>Una solución más práctica que un bolso común.</p>
-      </div>
-      <div class="comparison-grid">
-        <article class="comparison-card winner"><h3>Bolso Expandible</h3><ul><li>✓ Más capacidad cuando la necesitás</li><li>✓ Bolsillo húmedo/seco</li><li>✓ Compartimento para calzado</li><li>✓ Material impermeable</li></ul></article>
-        <div class="comparison-vs">VS</div>
-        <article class="comparison-card"><h3>Bolso común</h3><ul><li>× Espacio fijo</li><li>× Todo queda mezclado</li><li>× Sin división para calzado</li><li>× Menor protección ante humedad</li></ul></article>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Lo que dicen nuestras clientas.
+            <span></span>
+          </h2>
+        </div>
+
+        <div class="test-grid">
+          <!-- Testimonial 1 -->
+          <div class="test-card">
+            <p class="test-text">
+              "Lo pedí para un viaje a Buenos Aires y entró todo: ropa para 3 días, zapatos de taco y neceser. No podía
+              creer cuánto cabe. Y llegó al día siguiente de pedir."
+
+
+            </p>
+            <div class="test-footer">
+              <span class="test-name">Sofía M.
+              </span>
+              <span class="test-role">Asunción, Paraguay
+              </span>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="test-card">
+            <p class="test-text">
+              "Al principio se siente raro como el sonido viaja a través del hueso, pero te acostumbras rápido. El
+              hecho
+              de pagar cuando me lo entregan es una gran seguridad."
+            </p>
+            <div class="test-footer">
+              <span class="test-name">Valentina R.
+              </span>
+              <span class="test-role">San Lorenzo, Paraguay
+              </span>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="test-card">
+            <p class="test-text">
+              "Pedí el negro para mi marido y uno rosa para mí. Ambos llegaron perfectos. El material es muy resistente,
+              lo lavé a mano y quedó como nuevo."
+
+
+            </p>
+            <div class="test-footer">
+              <span class="test-name">Laura P.
+              </span>
+              <span class="test-role">Luque, Paraguay
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="proof-section" id="confianza">
-      <div class="section-heading">
-        <span>Compra tranquila</span>
-        <h2>Antes de enviar, confirmamos todo contigo</h2>
-        <p>Tu pedido queda registrado por la página. Luego verificamos color, ciudad, dirección y horario disponible.</p>
-      </div>
-      <div class="proof-grid">
-        <article class="proof-card"><h3>Pedido sin pago inicial</h3><p>En Asunción y Central pagás recién al recibir el bolso.</p></article>
-        <article class="proof-card"><h3>Entrega coordinada</h3><p>No enviamos a ciegas: primero confirmamos los datos cargados en el formulario.</p></article>
-        <article class="proof-card"><h3>Defecto cubierto</h3><p>Si el producto llega con defecto de fábrica, gestionamos el cambio.</p></article>
+    <!-- Checkout Form Section -->
+    <section class="checkout" id="checkout-section">
+      <div class="container checkout-grid">
+
+        <!-- Left details -->
+        <div class="checkout-text">
+          <span class="badge">Proceso Logístico Local</span>
+          <h2 class="checkout-title">Pedí ahora.
+            <br>
+          </h2>
+          <p class="checkout-desc">
+            Completá tus datos y recibí tu producto. Nuestro equipo lo lleva hasta tu puerta y pagás el total al tenerlo
+            en tus manos. Satisfacción garantizada.
+
+
+          </p>
+          <div class="checkout-total">Gs. 199.000</div>
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card">
+          <div class="form-header">
+            <div class="form-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              Formulario Seguro
+            </div>
+            <h3 class="form-title">COMPLETAR PEDIDO</h3>
+            <p class="form-subtitle">Datos encriptados · Paga contra entrega</p>
+          </div>
+
+          <form id="purchase-form" class="checkout-form">
+            <div class="form-group">
+              <label for="name" class="form-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Nombre y Apellido
+              </label>
+              <input type="text" id="name" class="form-input" placeholder="Ej. Juan Pérez" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone" class="form-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path
+                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z">
+                  </path>
+                </svg>
+                Teléfono
+              </label>
+              <div class="phone-wrapper">
+                <span class="phone-code">+595</span>
+                <input type="tel" id="phone" class="form-input" placeholder="0981 123 456" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="color" class="form-label">Color</label>
+
+              <select id="color" class="form-input" required>
+                <option value="">Seleccioná un color</option>
+                <option value="Gris">Gris — Moderno y Elegante</option>
+                <option value="Lila">Lila — Femenino y Delicado</option>
+                <option value="Negro">Negro — Clásico y Versátil</option>
+                <option value="Rosa">Rosa — Suave y Moderno</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                Ubicación GPS (Opcional)
+              </label>
+              <button type="button" id="gps-button" class="gps-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M12 2v2m0 16v2M2 12h2m16 0h2"></path>
+                </svg>
+                Adjuntar mi ubicación GPS
+              </button>
+            </div>
+
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="dept" class="form-label">Departamento</label>
+                <input type="text" id="dept" class="form-input" placeholder="Ej. Central" required>
+              </div>
+              <div class="form-group">
+                <label for="city" class="form-label">Ciudad</label>
+                <input type="text" id="city" class="form-input" placeholder="Ej. Luque" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address" class="form-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Dirección de entrega
+              </label>
+              <input type="text" id="address" class="form-input" placeholder="Calle y número, barrio, referencia" required>
+            </div>
+
+            <div class="checkout-summary-box">
+              <span class="summary-label">Total a Pagar</span>
+              <div class="summary-price">
+                <span class="price-strike">260.000</span>
+                <span class="price-total">Gs. 199.000</span>
+              </div>
+            </div>
+            <!-- Resumen del pedido -->
+            <div class="checkout-summary">
+
+              <div class="summary-row">
+                <span>Bolso Viajera XL</span>
+                <span id="selected-color">— Elegí un color</span>
+              </div>
+
+              <div class="summary-row">
+                <span>Envío</span>
+                <span class="free-shipping">GRATIS</span>
+              </div>
+
+              <hr class="summary-divider">
+
+              <div class="summary-total">
+                <span>Total a pagar</span>
+                <strong>Gs. 199.000</strong>
+              </div>
+
+            </div>
+            <button type="submit" class="btn form-btn" id="submit-btn">
+              Confirmar Mi Pedido
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </button>
+          </form>
+        </div>
+
       </div>
     </section>
 
-    <section class="faq-section" id="preguntas">
-      <div class="section-heading">
-        <span>Preguntas frecuentes</span>
-        <h2>Resolvé tus dudas antes de reservar</h2>
-      </div>
-      <div class="faq-list">
-        <details open><summary>¿El bolso es totalmente impermeable?</summary><p>Es resistente a salpicaduras, humedad y lluvia ligera. No está pensado para sumergirse en agua.</p></details>
-        <details><summary>¿Puedo elegir color?</summary><p>Sí. Elegís Rosa, Lila o Gris en el formulario antes de confirmar.</p></details>
-        <details><summary>¿Cuándo pago?</summary><p>En Asunción y Central pagás al recibir. Para interior te contactamos para coordinar el despacho.</p></details>
-        <details><summary>¿Sirve para gimnasio y viajes?</summary><p>Sí. Tiene espacio expandible, separación húmedo/seco y compartimento para calzado.</p></details>
-      </div>
-    </section>
   </main>
 
-  <footer class="footer">
-    <p>© 2026 VG Shop Py - Todos los derechos reservados</p>
-  </footer>
-
-  <a class="float-cta pulse-buy" href="#checkout" aria-label="Reservar Bolso de Viaje Expandible">
-    <span>Reservar Ahora</span>
-    <small>Gs. 219.000 - Confirmación por formulario</small>
-  </a>
-
-  <section class="confirmation hidden" id="confirmation" aria-live="polite" aria-modal="true" role="dialog">
-    <div class="confirmation-card">
-      <div class="success-icon">✓</div>
-      <h2>¡Pedido recibido!</h2>
-      <p>Muchas gracias por tu compra. Tu pedido <strong id="orderNumber">#000000</strong> ya fue registrado y será entregado en un plazo de 24 a 72 horas.</p>
-      <p>Tu <strong>Bolso de Viaje Expandible</strong> queda reservado. Nos pondremos en contacto contigo para confirmar color, ciudad y entrega antes de enviarlo.</p>
-      <p id="confirmationPaymentText">Recordá que el pago se realiza al recibir el producto. Te hablaremos al número <strong id="confirmationPhone">---</strong>.</p>
-      <button type="button" class="confirmation-btn" data-close-confirmation>Entendido</button>
+  <!-- Success Modal Overlay -->
+  <div class="modal" id="success-modal">
+    <div class="modal-content">
+      <div class="modal-success-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h2 class="modal-title">¡PEDIDO RECIBIDO!</h2>
+      <p class="modal-text">
+        Muchas gracias por tu compra, <strong id="modal-user-name"></strong>. Tu pedido ya fue registrado y será
+        entregado en un plazo de 24 a 72 horas.
+        <strong>Bolso Impermeable </strong> 🚚 El delivery se pondrá en contacto contigo antes de la entrega.<br><br>
+        💳 Recordá que el pago se realiza al recibir el producto. ¡Gracias por confiar en nosotros! 😊
+        Te hablaremos al numero:
+        <strong id="modal-user-phone"></strong>
+      </p>
+      <button class="btn modal-btn" id="close-modal-btn">Entendido</button>
     </div>
-  </section>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
-  <script src="script.js?v=20260705-live"></script>
+  <script src="app.js"></script>
 </body>
+
 </html>
